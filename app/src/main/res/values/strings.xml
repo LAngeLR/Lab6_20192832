@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Laboratorio6</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="resumen">Resumen</string>
+    <string name="egresos">Egresos</string>
+    <string name="ingresos">Ingresos</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="agregar">Agregar ingresos</string>
+    <string name="lista">Lista de Ingresos</string>
+    <string name="lista2">Lista de Egresos</string>
+
 </resources>

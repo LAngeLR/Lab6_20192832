@@ -1,8 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
+    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
+
+    dataBinding {
+        enabled = true
+    }
+
     namespace 'com.example.laboratorio6'
     compileSdk 34
 
@@ -26,6 +33,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -35,6 +45,17 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     testImplementation libs.junit
+
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+    implementation platform('com.google.firebase:firebase-bom:33.0.0')
+    implementation("com.google.firebase:firebase-firestore")
+
+
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
 }

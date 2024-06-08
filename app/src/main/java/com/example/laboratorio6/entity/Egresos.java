@@ -1,0 +1,73 @@
+package com.example.laboratorio6.entity;
+
+import java.util.Date;
+
+public class Egresos {
+    private String id;
+    private String idUsuario;
+    private String titulo;
+    private double monto;
+    private String descripcion;
+    private Date fecha;
+
+    public Egresos() {
+
+    }
+
+    public Egresos(String id, String idUsuario, String titulo, double monto, String descripcion, Date fecha) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.titulo = titulo;
+        this.monto = monto;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+}
