@@ -34,7 +34,7 @@
         android:layout_below="@id/divider"
         android:padding="8dp" />
 
-
+ }
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregarIngreso"
         android:layout_width="wrap_content"

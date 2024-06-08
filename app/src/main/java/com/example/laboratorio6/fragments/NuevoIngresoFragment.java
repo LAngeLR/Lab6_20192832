@@ -15,15 +15,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.laboratorio6.R;
+import com.example.laboratorio6.databinding.FragmentNuevoEgresoBinding;
 import com.example.laboratorio6.databinding.FragmentNuevoIngresoBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,11 +84,23 @@ public class NuevoIngresoFragment extends Fragment {
         int month = datePicker.getMonth();
         int year = datePicker.getYear();
 
+        // Ajustar el valor del mes, ya que en el DatePicker es zero-based
+        month += 1;
 
+        // Crear un nuevo objeto Calendar y establecer sus valores con los del DatePicker
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
 
+        // Obtener la fecha en milisegundos
         long timestamp = calendar.getTimeInMillis();
+
+        // Crear un objeto Date con el timestamp obtenido
+        Date date = new Date(timestamp);
+
+        // Convertir la fecha a un formato compatible con Firestore
+        Timestamp fechaFirestore = new Timestamp(date);
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -96,7 +111,7 @@ public class NuevoIngresoFragment extends Fragment {
             ingresoData.put("titulo", titulo);
             ingresoData.put("monto", monto);
             ingresoData.put("descripcion", descripcion);
-            ingresoData.put("fecha", FieldValue.serverTimestamp()); // Guardar la fecha como un timestamp
+            ingresoData.put("fecha", fechaFirestore); // Guardar la fecha como un timestamp
 
             db.collection("ingresos")
                     .document()
@@ -114,7 +129,7 @@ public class NuevoIngresoFragment extends Fragment {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getContext(), "Error al crear el ingreso", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Error al crear el egreso", Toast.LENGTH_SHORT).show();
                             // Manejo de errores
                         }
                     });
