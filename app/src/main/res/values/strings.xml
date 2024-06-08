@@ -9,5 +9,6 @@
     <string name="agregar">Agregar ingresos</string>
     <string name="lista">Lista de Ingresos</string>
     <string name="lista2">Lista de Egresos</string>
+    <string name="salir">Salir</string>
 
 </resources>

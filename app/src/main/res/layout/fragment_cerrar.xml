@@ -1,16 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.CerrarFragment">
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="18dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="8dp">
 
-
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/cerrar" />
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewLogoutMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:text="Confirmacion de Salida"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewLogoutMessage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="correo"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/textViewUserEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/logo2" />
 
 
-</FrameLayout>
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageViewLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_background"
+            android:text="Salir"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
