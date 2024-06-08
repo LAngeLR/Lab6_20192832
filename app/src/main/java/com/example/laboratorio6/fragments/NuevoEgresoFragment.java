@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.laboratorio6.R;
 import com.example.laboratorio6.databinding.FragmentNuevoEgresoBinding;
+import com.example.laboratorio6.databinding.FragmentNuevoIngresoBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,12 +80,10 @@ public class NuevoEgresoFragment extends Fragment {
 
         double monto = Double.parseDouble(montoStr);
 
-        int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
+        // Obtener la fecha seleccionada del DatePicker
         int year = datePicker.getYear();
-
-        // Ajustar el valor del mes, ya que en el DatePicker es zero-based
-        month += 1;
+        int month = datePicker.getMonth();
+        int day = datePicker.getDayOfMonth();
 
         // Crear un nuevo objeto Calendar y establecer sus valores con los del DatePicker
         Calendar calendar = Calendar.getInstance();
@@ -101,6 +100,17 @@ public class NuevoEgresoFragment extends Fragment {
         // Convertir la fecha a un formato compatible con Firestore
         Timestamp fechaFirestore = new Timestamp(date);
 
+        // Obtener el valor del mes del DatePicker (recuerda que es zero-based, por lo que debes sumar 1)
+        int selectedMonth = datePicker.getMonth() + 1;
+
+        // Crear un nuevo objeto Calendar y establecer su mes con el valor seleccionado
+        Calendar calendarMes = Calendar.getInstance();
+        calendarMes.set(Calendar.MONTH, selectedMonth - 1); // Restar 1 porque Calendar.MONTH es zero-based
+
+        // Obtener el número del mes en formato de 1 a 12
+        int mesNum = calendarMes.get(Calendar.MONTH) + 1;
+        String mesNumerico = String.valueOf(mesNum);
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String idUsuario = currentUser.getUid();
@@ -111,6 +121,7 @@ public class NuevoEgresoFragment extends Fragment {
             egresoData.put("monto", monto);
             egresoData.put("descripcion", descripcion);
             egresoData.put("fecha", fechaFirestore); // Guardar la fecha como un timestamp
+            egresoData.put("mes", mesNumerico); // Guardar el número del mes
 
             db.collection("egresos")
                     .document()

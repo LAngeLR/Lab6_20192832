@@ -1,4 +1,4 @@
-<!-- res/layout/fragment_dashboard.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,22 +19,49 @@
         android:layout_gravity="center"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
+    <!-- Añadir un TextView para mostrar el mes seleccionado -->
+    <TextView
+        android:id="@+id/textViewSelectedMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="209dp"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#00796B"
         android:elevation="4dp" />
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="331dp"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#00796B"
-        android:elevation="4dp" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartIngresosEgresos"
+            android:layout_width="73dp"
+            android:layout_height="213dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#00796B"
+            android:elevation="4dp" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartConsolidado"
+            android:layout_width="0dp"
+            android:layout_height="210dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#00796B"
+            android:elevation="4dp" />
+
+    </LinearLayout>
 </LinearLayout>

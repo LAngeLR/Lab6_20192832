@@ -9,18 +9,28 @@ public class Egresos {
     private double monto;
     private String descripcion;
     private Date fecha;
+    private String mes;
 
     public Egresos() {
 
     }
 
-    public Egresos(String id, String idUsuario, String titulo, double monto, String descripcion, Date fecha) {
+    public Egresos(String id, String idUsuario, String titulo, double monto, String descripcion, Date fecha, String mes) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.titulo = titulo;
         this.monto = monto;
         this.descripcion = descripcion;
         this.fecha = fecha;
+        this.mes = mes;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
     }
 
     public String getId() {
